@@ -52,9 +52,9 @@ export const postNewData = async (
     });
 };
 
-export const postNewImage = async (data, locPath) => {
+export const postNewImage = async (data, locPath, id) => {
   return await axios
-    .post(`${postImageUrl}/${locPath}/`, data)
+    .post(`${postImageUrl}/${locPath}/${id}`, data)
     .then(function (response) {
       console.log(response);
     })

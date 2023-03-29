@@ -26,7 +26,6 @@ export const FishingLocationsList = () => {
 
   const loadMore = () => {
     setPage((prevPage) => prevPage + 1);
-    console.log(page);
   };
 
   const backLoad = () => {
@@ -75,14 +74,26 @@ export const FishingLocationsList = () => {
               ))}
           </ul>
         )}
+        {location.length === 0 &&
+          setTimeout(() => {
+            <>
+              <h1 className={css.endTitle}>
+                Oops! There is no more locations in this region!
+              </h1>
+              <img src={lastImage} alt={lastImage} />
+            </>;
+          }, 2000)}
         {location.length === 0 && (
-          <>
-            <h1 className={css.endTitle}>
-              Oops! There is no more locations in this region!
-            </h1>
-            <img src={lastImage} alt={lastImage} />
-          </>
+          <Dna
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="dna-loading"
+            wrapperStyle={{}}
+            wrapperClass="dna-wrapper"
+          />
         )}
+
         <ButtonContainer>
           {shouldBackButton && (
             <button className={css.button} onClick={backLoad}>
