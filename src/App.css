@@ -1,0 +1,21 @@
+.App {
+  text-align: center;
+}
+
+@font-face {
+  font-family: "Shantell";
+  src: local("Shantell"),
+    url(./Utilities/Fonts/Shantell/ShantellSans-.ttf) format("truetype");
+}
+@font-face {
+  font-family: "PlayfairDisplay";
+  src: local("PlayfairDisplay"),
+    url(./Utilities/Fonts/Playfair_Display/PlayfairDisplay-Italic-VariableFont_wght.ttf)
+      format("truetype");
+}
+
+@font-face {
+  font-family: "Pacifico";
+  src: local("Pacifico"),
+    url(./Utilities/Fonts/Pacifico/Pacifico-Regular.ttf) format("truetype");
+}

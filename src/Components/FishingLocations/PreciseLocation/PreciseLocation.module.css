@@ -1,0 +1,62 @@
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  justify-items: center;
+  align-items: center;
+  padding: 32px;
+  padding-top: 0;
+}
+
+.dataContainer {
+  text-align: left;
+  display: block;
+  width: 80%;
+}
+
+.title {
+  font-family: "Pacifico";
+  font-size: 36px;
+}
+
+.adress {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 24px;
+}
+
+.description {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5em;
+  font-size: 20px;
+}
+
+.map {
+  padding: 8px;
+  width: 600px;
+  height: 350px;
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+
+.fishList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.fishList > li {
+  margin-top: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+.imagesList {
+  display: grid;
+  gap: 24px;
+  justify-content: center;
+  list-style-type: none;
+  grid-template-columns: repeat(6, 1fr);
+  margin-top: 0;
+  margin-bottom: 24px;
+}

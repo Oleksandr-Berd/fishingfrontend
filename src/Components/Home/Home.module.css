@@ -1,0 +1,35 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  justify-content: center;
+  grid-template-rows: 1fr;
+  margin: 0 auto;
+  margin-top: 16px;
+}
+
+.panelFirst {
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  min-height: 100%;
+}
+
+.panelSecond {
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  min-height: 100%;
+}
+
+img {
+  max-width: 100%;
+  min-height: 100%;
+}
+
+.panelTall {
+  grid-auto-rows: 2fr;
+}
+
+.panellSmall {
+  grid-auto-rows: 1fr;
+  grid-template-columns: 1fr;
+}
