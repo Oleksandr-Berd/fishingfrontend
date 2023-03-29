@@ -4,7 +4,6 @@ import { BackButton } from "../../Utilities/Buttons/BackButton";
 import { ButtonContainer } from "../../Utilities/Buttons/ButtonContainer";
 import { HomeButton } from "../../Utilities/Buttons/HomeButton";
 import { getFishingLocations } from "../../Utilities/helpers";
-import { BaseUrlPicture } from "../../Utilities/URL";
 import { Dna } from "react-loader-spinner";
 import css from "./FishingLocationsList.module.css";
 import lastImage from "../../Utilities/Images/common/how_to_surf_fish.jpg";
@@ -58,7 +57,7 @@ export const FishingLocationsList = () => {
                 <div key={_id} className={css.item}>
                   <img
                     className={css.locationPicture}
-                    src={`${BaseUrlPicture}/${picture[0]}`}
+                    src={`${picture[0]}`}
                     alt={title}
                   />
                   <Link to={_id} key={_id} className={css.locationItem}>

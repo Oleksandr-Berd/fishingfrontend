@@ -1,4 +1,4 @@
-import { patchNewImage, postNewImage } from "../../Utilities/helpers";
+import { postNewImage } from "../../Utilities/helpers";
 import css from "./FormAddImage.module.css";
 
 export const FormAddImage = ({ locPath, id }) => {
@@ -8,9 +8,7 @@ export const FormAddImage = ({ locPath, id }) => {
 
     formData.append("image", evt.target.image.files[0]);
 
-    postNewImage(formData, locPath).finally(
-      patchNewImage(formData, locPath, id)
-    );
+    postNewImage(formData, locPath);
   };
 
   return (

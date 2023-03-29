@@ -19,7 +19,7 @@ export const PreciseLocation = () => {
   const {
     title,
     adress,
-    fishes,
+    fish,
     description,
     coordinates,
     allowedTime,
@@ -56,7 +56,7 @@ export const PreciseLocation = () => {
           </p>
           <p style={{ fontWeight: "800", fontSize: "24px" }}>Type of fish:</p>
           <ul className={css.fishList}>
-            {fishes && fishes.map((fish) => <li key={nanoid()}>{fish}</li>)}
+            {fish && fish.map((fish) => <li key={nanoid()}>{fish}</li>)}
           </ul>
         </div>
         {coordinates && (
