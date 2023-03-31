@@ -7,7 +7,8 @@ import { getFishingLocations } from "../../Utilities/helpers";
 import { Dna } from "react-loader-spinner";
 import css from "./FishingLocationsList.module.css";
 import lastImage from "../../Utilities/Images/common/how_to_surf_fish.jpg";
-export const FishingLocationsList = () => {
+
+const FishingLocationsList = () => {
   const { locPath } = useParams();
   const [location, setLocation] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -111,4 +112,5 @@ export const FishingLocationsList = () => {
     </div>
   );
 };
-//
+
+export default FishingLocationsList;

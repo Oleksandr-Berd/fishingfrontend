@@ -6,7 +6,7 @@ import image4 from "../../Utilities/Images/home/fly-fishing-beaver-river.jpg";
 import image5 from "../../Utilities/Images/home/2820-m0014-m007-m050-asym-m008-m022-fishinggearguide-as293414344.jpeg";
 import image6 from "../../Utilities/Images/home/gone_fishing.max-752x423.jpg";
 
-export const Home = () => {
+const Home = () => {
   return (
     <div className={css.container}>
       <div className={css.panelFirst}>
@@ -38,3 +38,5 @@ export const Home = () => {
     </div>
   );
 };
+
+export default Home;

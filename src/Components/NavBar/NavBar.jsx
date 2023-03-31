@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import css from "./NavBar.module.css";
 
-export const NavBar = () => {
+const NavBar = () => {
   const navItem = [
     { href: "home", text: "Home" },
     { href: "newData", text: "Add your own data" },
@@ -21,3 +21,5 @@ export const NavBar = () => {
     </nav>
   );
 };
+
+export default NavBar;

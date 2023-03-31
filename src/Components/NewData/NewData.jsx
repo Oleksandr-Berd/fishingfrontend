@@ -4,7 +4,7 @@ import { ButtonContainer } from "../../Utilities/Buttons/ButtonContainer";
 import { HomeButton } from "../../Utilities/Buttons/HomeButton";
 import css from "./NewData.module.css";
 
-export const NewData = ({ submit }) => {
+const NewData = ({ submit }) => {
   const [title, setTitle] = useState("");
   const [{ latitude, longitude }, setCoordinates] = useState({});
   const [adress, setAdress] = useState("");
@@ -200,3 +200,5 @@ export const NewData = ({ submit }) => {
     </div>
   );
 };
+
+export default NewData;

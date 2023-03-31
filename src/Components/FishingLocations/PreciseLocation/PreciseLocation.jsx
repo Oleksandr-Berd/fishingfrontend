@@ -8,7 +8,8 @@ import { FormAddImage } from "../../FormAddImage/FormAddImage";
 import { nanoid } from "nanoid";
 import css from "./PreciseLocation.module.css";
 import { PrecLocImages } from "./PrecLocImages/PrecLocImages";
-export const PreciseLocation = () => {
+
+const PreciseLocation = () => {
   const { _id, locPath } = useParams();
   const [location, setLocation] = useState("");
 
@@ -77,3 +78,5 @@ export const PreciseLocation = () => {
     </div>
   );
 };
+
+export default PreciseLocation;

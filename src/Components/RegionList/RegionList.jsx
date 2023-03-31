@@ -8,7 +8,7 @@ import { HomeButton } from "../../Utilities/Buttons/HomeButton";
 import css from "./RegionList.module.css";
 import { Dna } from "react-loader-spinner";
 
-export const RegionList = () => {
+const RegionList = () => {
   const [regions, setRegions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
@@ -76,3 +76,5 @@ export const RegionList = () => {
     </>
   );
 };
+
+export default RegionList;
