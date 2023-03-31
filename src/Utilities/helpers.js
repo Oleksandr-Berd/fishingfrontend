@@ -1,5 +1,11 @@
 import axios from "axios";
-import { postImageUrl, URL, URLlocation, URLpaginate } from "./URL";
+import {
+  postImageUrl,
+  URL,
+  URLlocation,
+  urlNewLocation,
+  URLpaginate,
+} from "./URL";
 
 export const getRegions = async ({ page, perPage }) => {
   return await axios
@@ -27,7 +33,7 @@ export const postNewData = async (
     title,
     coordinates,
     adress,
-    fishes,
+    fish,
     fishingConditions,
     description,
     allowedTime,
@@ -35,14 +41,15 @@ export const postNewData = async (
   locPath
 ) => {
   return await axios
-    .post(`${URL}/${locPath}`, {
+    .post(`${urlNewLocation}/${locPath}`, {
       title,
       coordinates,
       adress,
-      fishes,
+      fish,
       fishingConditions,
       description,
       allowedTime,
+      region: locPath,
     })
     .then(function (response) {
       console.log(response);

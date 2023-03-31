@@ -4,7 +4,7 @@ import { Header } from "./Components/Header/Header";
 import { TitleHeader } from "./Components/Header/TitleHead";
 import { NavBar } from "./Components/NavBar/NavBar";
 import { Home } from "./Components/Home/Home";
-import { Fishes } from "./Components/Fishes/Fishes";
+import { Fish } from "./Components/Fish/Fish";
 import { RegionList } from "./Components/RegionList/RegionList";
 import { FishingLocationsList } from "./Components/FishingLocations/FishinglocationsList";
 import { Footer } from "./Components/Footer/Footer";
@@ -47,7 +47,7 @@ function App() {
           path="newData"
           element={<NewData submit={handleFormSubmitAddData} />}
         />
-        <Route path="fishes" element={<Fishes />} />
+        <Route path="fish" element={<Fish />} />
       </Routes>
 
       <Footer></Footer>

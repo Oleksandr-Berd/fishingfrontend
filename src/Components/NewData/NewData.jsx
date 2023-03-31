@@ -8,7 +8,7 @@ export const NewData = ({ submit }) => {
   const [title, setTitle] = useState("");
   const [{ latitude, longitude }, setCoordinates] = useState({});
   const [adress, setAdress] = useState("");
-  const [fishes, setFishes] = useState([]);
+  const [fish, setFish] = useState([]);
   const [fishingConditions, setFishingConditions] = useState("");
   const [description, setDescription] = useState("");
   const [allowedTime, setAllowedTime] = useState("");
@@ -22,7 +22,7 @@ export const NewData = ({ submit }) => {
         title,
         coordinates,
         adress,
-        fishes,
+        fish,
         fishingConditions,
         description,
         allowedTime,
@@ -32,10 +32,11 @@ export const NewData = ({ submit }) => {
     setTitle("");
     setCoordinates({});
     setAdress("");
-    setFishes([]);
+    setFish([]);
     setFishingConditions("");
     setDescription("");
     setAllowedTime("");
+    setLocPath("");
   };
 
   return (
@@ -64,11 +65,31 @@ export const NewData = ({ submit }) => {
           }}
         />
         <datalist className={css.datalist} id="regions">
-          <option value="locKyiv">Kyiv region</option>
-          <option>Odesa region</option>
-          <option>Dnipro region</option>
-          <option>Chernihiv region</option>
-          <option>Kharkiv region</option>
+          <option value="Cherkasy">Cherkasy region</option>
+          <option value="Chernihiv">Chernihiv region</option>
+          <option value="Chernivtsi">Chernivtsi region</option>
+          <option value="Crimea">Crimea region</option>
+          <option value="Dnipro">Dnipro region</option>
+          <option value="Donetsk">Donetsk region</option>
+          <option value="Frankivsk">Frankivsk region</option>
+          <option value="Kharkiv">Kharkiv region</option>
+          <option value="Kherson">Kherson region</option>
+          <option value="Khmelnytsk">Khmelnytsk region</option>
+          <option value="Kropyvnytskyi">Kropyvnytskyi region</option>
+          <option value="Kyiv">Kyiv region</option>
+          <option value="Luhansk">Luhansk region</option>
+          <option value="Lviv">Lviv region</option>
+          <option value="Mykolaiv">Mykolaiv region</option>
+          <option value="Odesa">Odesa region</option>
+          <option value="Poltava">Poltava region</option>
+          <option value="Rivne">Rivne region</option>
+          <option value="Sumy">Sumy region</option>
+          <option value="Ternopil">Ternopil region</option>
+          <option value="Vinnytsia">Vinnytsia region</option>
+          <option value="Volyn">Volyn region</option>
+          <option value="Zakarpatia">Zakarpatia region</option>
+          <option value="Zaporizhia">Zaporizhia region</option>
+          <option value="Zhytomyr">Zhytomyr region</option>
         </datalist>
         <label className={css.label} htmlFor="title">
           Enter the title
@@ -123,9 +144,9 @@ export const NewData = ({ submit }) => {
           type="text"
           name="fish"
           onChange={(evt) => {
-            setFishes(evt.currentTarget.value.split(","));
+            setFish(evt.currentTarget.value.split(","));
           }}
-          value={fishes}
+          value={fish}
           placeholder="e.g. fish1, fish2"
           id="fish"
         />
