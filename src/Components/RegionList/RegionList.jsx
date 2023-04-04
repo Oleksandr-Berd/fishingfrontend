@@ -14,17 +14,11 @@ import ErrorPage from "../Error/ErrorPage";
 
 
 const RegionList = () => {
-  // const [regions, setRegions] = useState([]);
-  // const [loading, setLoading] = useState(false);
+  
   const [page, setPage] = useState(1);
   const [perPage] = useState(4);
 
   const { data, loading, error } = useFetch(URL, { page, perPage })
-  
-  // useEffect(() => {
-  //   setLoading(true);
-  //   getRegions({ page, perPage }).then(setRegions).finally(setLoading(false));
-  // }, [page, perPage]);
 
   const shouldLoadingButton =
     data.length > 0 && data.length >= perPage && !loading;

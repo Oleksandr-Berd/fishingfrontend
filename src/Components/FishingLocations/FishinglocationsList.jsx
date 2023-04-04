@@ -12,20 +12,11 @@ import ErrorPage from "../Error/ErrorPage";
 
 const FishingLocationsList = () => {
   const { locPath } = useParams();
-  // const [location, setLocation] = useState([]);
-  // const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [perPage] = useState(3);
 
   const { data, loading, error } = useFetch(URL, {locPath, page, perPage })
 
-
-  // useEffect(() => {
-  //   setLoading(true);
-  //   getFishingLocations({ locPath, page, perPage })
-  //     .then(setLocation)
-  //     .finally(setLoading(false));
-  // }, [locPath, page, perPage]);
   const shouldLoadingButton = data && data.length >= perPage && !loading;
 
   const shouldBackButton = page !== 1 && !loading;
