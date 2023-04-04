@@ -4,7 +4,6 @@ import {
   URL,
   URLlocation,
   urlNewLocation,
-  URLpaginate,
 } from "./URL";
 
 export const getRegions = async ({ page, perPage }) => {
@@ -16,7 +15,7 @@ export const getRegions = async ({ page, perPage }) => {
 
 export const getFishingLocations = async ({ locPath, page, perPage }) => {
   return await axios
-    .get(`${URLpaginate}/${locPath}?page=${page}&limit=${perPage}`)
+    .get(`${URL}/${locPath}?page=${page}&limit=${perPage}`)
     .then((response) => response.data.data.results)
     .catch((err) => console.log(err));
 };

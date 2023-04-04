@@ -1,27 +1,32 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, Outlet, useParams } from "react-router-dom";
 import { BackButton } from "../../Utilities/Buttons/BackButton";
 import { ButtonContainer } from "../../Utilities/Buttons/ButtonContainer";
 import { HomeButton } from "../../Utilities/Buttons/HomeButton";
-import { getFishingLocations } from "../../Utilities/helpers";
 import { Dna } from "react-loader-spinner";
 import css from "./FishingLocationsList.module.css";
 import lastImage from "../../Utilities/Images/common/how_to_surf_fish.jpg";
+import useFetch from "../../Utilities/Hooks/useFetch";
+import { URL } from "../../Utilities/URL";
+import ErrorPage from "../Error/ErrorPage";
 
 const FishingLocationsList = () => {
   const { locPath } = useParams();
-  const [location, setLocation] = useState([]);
-  const [loading, setLoading] = useState(false);
+  // const [location, setLocation] = useState([]);
+  // const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [perPage] = useState(3);
 
-  useEffect(() => {
-    setLoading(true);
-    getFishingLocations({ locPath, page, perPage })
-      .then(setLocation)
-      .finally(setLoading(false));
-  }, [locPath, page, perPage]);
-  const shoudLoadingButton = location && location.length >= perPage && !loading;
+  const { data, loading, error } = useFetch(URL, {locPath, page, perPage })
+
+
+  // useEffect(() => {
+  //   setLoading(true);
+  //   getFishingLocations({ locPath, page, perPage })
+  //     .then(setLocation)
+  //     .finally(setLoading(false));
+  // }, [locPath, page, perPage]);
+  const shouldLoadingButton = data && data.length >= perPage && !loading;
 
   const shouldBackButton = page !== 1 && !loading;
 
@@ -34,7 +39,10 @@ const FishingLocationsList = () => {
   };
 
   return (
+    
     <div>
+      {error && <ErrorPage error={error } />}
+
       <ButtonContainer>
         <BackButton />
         <HomeButton />
@@ -50,10 +58,10 @@ const FishingLocationsList = () => {
         />
       )}
       <div className={css.container}>
-        {location.length > 0 && (
+        {data.length > 0 && (
           <ul className={css.gridContainer}>
-            {location &&
-              location.map(({ title, adress, picture, fish, _id }) => (
+            {data &&
+              data.map(({ title, adress, picture, fish, _id }) => (
                 <div key={_id} className={css.item}>
                   <img
                     className={css.locationPicture}
@@ -75,7 +83,7 @@ const FishingLocationsList = () => {
               ))}
           </ul>
         )}
-        {location.length === 0 && (
+        {data.length === 0 && (
           <>
             <Dna
               visible={true}
@@ -101,7 +109,7 @@ const FishingLocationsList = () => {
               Load Prev
             </button>
           )}
-          {shoudLoadingButton && (
+          {shouldLoadingButton && (
             <button className={css.button} onClick={loadMore}>
               Load Next
             </button>

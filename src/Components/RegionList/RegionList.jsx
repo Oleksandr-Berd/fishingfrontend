@@ -1,26 +1,33 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Regions } from "../Regions/Regions";
 import { Outlet } from "react-router-dom";
-import { getRegions } from "../../Utilities/helpers";
 import { ButtonContainer } from "../../Utilities/Buttons/ButtonContainer";
 import { BackButton } from "../../Utilities/Buttons/BackButton";
 import { HomeButton } from "../../Utilities/Buttons/HomeButton";
 import css from "./RegionList.module.css";
 import { Dna } from "react-loader-spinner";
+import {
+  URL,
+} from "../../Utilities/URL";
+import useFetch from "../../Utilities/Hooks/useFetch";
+import ErrorPage from "../Error/ErrorPage";
+
 
 const RegionList = () => {
-  const [regions, setRegions] = useState([]);
-  const [loading, setLoading] = useState(false);
+  // const [regions, setRegions] = useState([]);
+  // const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [perPage] = useState(4);
 
-  useEffect(() => {
-    setLoading(true);
-    getRegions({ page, perPage }).then(setRegions).finally(setLoading(false));
-  }, [page, perPage]);
+  const { data, loading, error } = useFetch(URL, { page, perPage })
+  
+  // useEffect(() => {
+  //   setLoading(true);
+  //   getRegions({ page, perPage }).then(setRegions).finally(setLoading(false));
+  // }, [page, perPage]);
 
-  const shoudLoadingButton =
-    regions.length > 0 && regions.length >= perPage && !loading;
+  const shouldLoadingButton =
+    data.length > 0 && data.length >= perPage && !loading;
 
   const shouldBackButton = page !== 1 && !loading;
 
@@ -34,6 +41,7 @@ const RegionList = () => {
 
   return (
     <>
+      {error && <ErrorPage error={error } />}
       <ButtonContainer>
         <BackButton />
         <HomeButton />
@@ -49,7 +57,7 @@ const RegionList = () => {
         />
       )}
       <ul className={css.container}>
-        {regions.map(({ _id, name, locPath, image }) => (
+        {data.map(({ _id, name, locPath, image }) => (
           <Regions
             key={_id}
             id={_id}
@@ -65,7 +73,7 @@ const RegionList = () => {
             Load Prev
           </button>
         )}
-        {shoudLoadingButton && (
+        {shouldLoadingButton && (
           <button className={css.button} onClick={loadMore}>
             Load Next
           </button>
