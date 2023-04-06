@@ -1,0 +1,16 @@
+.labelFilterRegion{
+    display: flex;
+    flex-direction: column;
+    font-family: "Shantell";
+    font-size: 20px;
+}
+
+.inputFilterRegion{
+    margin-top: 12px;
+    min-width: 240px;
+  padding: 8px 20px;
+  text-align: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    border-radius: 8px;
+}
