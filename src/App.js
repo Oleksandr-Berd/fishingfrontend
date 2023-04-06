@@ -30,6 +30,8 @@ const PreciseLocation = lazy(() =>
   import("./Components/FishingLocations/PreciseLocation/PreciseLocation")
 );
 const NewData = lazy(() => import("./Components/NewData/NewData"));
+const NotFound = lazy(() => import("./Utilities/Errors/NotFound"));
+
 
 function App() {
   const [finalBody, setFinalBody] = useState({});
@@ -43,7 +45,6 @@ function App() {
 
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
-
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
@@ -124,6 +125,7 @@ function App() {
               element={<NewData submit={handleFormSubmitAddData} />}
             />
             <Route path="fish" element={<Fish />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer></Footer>
         </Suspense>

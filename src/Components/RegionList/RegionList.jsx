@@ -7,6 +7,7 @@ import { BackButton } from "../../Utilities/Buttons/BackButton";
 import { HomeButton } from "../../Utilities/Buttons/HomeButton";
 import css from "./RegionList.module.css";
 import { Dna } from "react-loader-spinner";
+import FilterRegions from "../FilterRegions/FilterRegions";
 
 const RegionList = () => {
   const [regions, setRegions] = useState([]);
@@ -36,6 +37,7 @@ const RegionList = () => {
     <>
       <ButtonContainer>
         <BackButton />
+        <FilterRegions/>
         <HomeButton />
       </ButtonContainer>
       {loading && (
