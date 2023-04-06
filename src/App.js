@@ -11,6 +11,7 @@ import { useAuth } from "./Utilities/Hooks/useAuth";
 import { refreshUser } from "../src/Redux/Auth/operations";
 import { UserMenu } from "./Components/UserMenu/UserMenu";
 import { AuthNav } from "./Components/AuthNav/AuthNav";
+import Layout from "./Components/Layout/Layout";
 
 
 const RegisterPage = lazy(() => import("./Pages/Register"));
@@ -71,58 +72,62 @@ function App() {
     </b>
   ) : (
     <div className="App">
-      <Suspense
-        fallback={
-          <Dna
-            visible={true}
-            height="80"
-            width="80"
-            ariaLabel="dna-loading"
-            wrapperStyle={{}}
-            wrapperClass="dna-wrapper"
-          />
-        }
-      >
-        <Header>
-          <TitleHeader />
-          {isLoggedIn ? <UserMenu /> : <AuthNav />}
-        </Header>
-        <Routes>
-          <Route path="/" element={<NavBar />}>
-            <Route path="home" element={<Home />} />
-          </Route>
-          <Route index element={<Navigate to={"home"} />}></Route>
-          <Route
-            path="/register"
-            element={
-              <RestrictedRoute
-                redirectTo="/home"
-                component={<RegisterPage />}
-              />
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <RestrictedRoute redirectTo="/home" component={<LoginPage />} />
-            }
-          />
-          <Route
-            path="/home"
-            element={<PrivateRoute redirectTo="/login" component={<Home />} />}
-          />
+      <Layout>
+        <Suspense
+          fallback={
+            <Dna
+              visible={true}
+              height="80"
+              width="80"
+              ariaLabel="dna-loading"
+              wrapperStyle={{}}
+              wrapperClass="dna-wrapper"
+            />
+          }
+        >
+          <Header>
+            <TitleHeader />
+            {isLoggedIn ? <UserMenu /> : <AuthNav />}
+          </Header>
+          <Routes>
+            <Route path="/" element={<NavBar />}>
+              <Route path="home" element={<Home />} />
+            </Route>
+            <Route index element={<Navigate to={"home"} />}></Route>
+            <Route
+              path="/register"
+              element={
+                <RestrictedRoute
+                  redirectTo="/home"
+                  component={<RegisterPage />}
+                />
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <RestrictedRoute redirectTo="/home" component={<LoginPage />} />
+              }
+            />
+            <Route
+              path="/home"
+              element={
+                <PrivateRoute redirectTo="/login" component={<Home />} />
+              }
+            />
 
-          <Route path="region" element={<RegionList />} />
-          <Route path="region/:locPath" element={<FishingLocationsList />} />
-          <Route path="region/:locPath/:_id" element={<PreciseLocation />} />
-          <Route
-            path="newData"
-            element={<NewData submit={handleFormSubmitAddData} />}
-          />
-          <Route path="fish" element={<Fish />} />
-        </Routes>
-        <Footer></Footer>
-      </Suspense>
+            <Route path="region" element={<RegionList />} />
+            <Route path="region/:locPath" element={<FishingLocationsList />} />
+            <Route path="region/:locPath/:_id" element={<PreciseLocation />} />
+            <Route
+              path="newData"
+              element={<NewData submit={handleFormSubmitAddData} />}
+            />
+            <Route path="fish" element={<Fish />} />
+          </Routes>
+          <Footer></Footer>
+        </Suspense>
+      </Layout>
     </div>
   );
 }
