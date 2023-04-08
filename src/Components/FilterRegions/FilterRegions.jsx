@@ -25,7 +25,7 @@ const FilterRegions = ({ submit }) => {
           }}
         />
       </label>
-      <button type="submit"> Search</button>
+      <button type="submit" className={css.button}> Search</button>
     </form>
   );
 };

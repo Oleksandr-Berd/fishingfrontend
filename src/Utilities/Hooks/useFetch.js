@@ -11,6 +11,9 @@ function useFetch(url, { locPath, finalQuery, page, perPage }) {
     url = url + "/" + locPath;
   }
 
+  // if (finalQuery) {
+  //   page = 1;
+  // }
 
   useEffect(() => {
     async function fetchData() {

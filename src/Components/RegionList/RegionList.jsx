@@ -10,6 +10,7 @@ import FilterRegions from "../FilterRegions/FilterRegions";
 import useFetch from "../../Utilities/Hooks/useFetch";
 import { URL } from "../../Utilities/URL";
 import ErrorPage from "../Error/ErrorPage"
+import NotFound from "../../Utilities/Errors/NotFound";
 
 const RegionList = () => {
   const [page, setPage] = useState(1);
@@ -44,7 +45,8 @@ const handleFilterSubmit = (query) => {
         <FilterRegions submit={handleFilterSubmit} />
         <HomeButton />
       </ButtonContainer>
-      {error && <ErrorPage/>}
+      {error && <ErrorPage />}
+      {data.length === 0 && <NotFound/>}
       {isLoading && (
         <Dna
           visible={true}

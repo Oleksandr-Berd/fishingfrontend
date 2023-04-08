@@ -6,6 +6,7 @@ const Register = () => {
     <div className={css.registerContainer}>
         <h1>Registration</h1>
       <RegisterForm />
+      <a href="http://localhost:5002/google">Authorize with Google</a>
     </div>
   );
 }
