@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Regions } from "../Regions/Regions";
 import { Outlet } from "react-router-dom";
-import { getRegions } from "../../Utilities/helpers";
 import { ButtonContainer } from "../../Utilities/Buttons/ButtonContainer";
 import { BackButton } from "../../Utilities/Buttons/BackButton";
 import { HomeButton } from "../../Utilities/Buttons/HomeButton";
@@ -9,30 +8,24 @@ import css from "./RegionList.module.css";
 import { Dna } from "react-loader-spinner";
 import FilterRegions from "../FilterRegions/FilterRegions";
 import useFetch from "../../Utilities/Hooks/useFetch";
+import { URL } from "../../Utilities/URL";
+import ErrorPage from "../Error/ErrorPage"
 
 const RegionList = () => {
-  const [regions, setRegions] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [perPage] = useState(4);
   const [finalQuery, setFinalQuery] = useState("")
+  const { data, isLoading, error } = useFetch(URL, {page, perPage});
 
 const handleFilterSubmit = (query) => {
   setFinalQuery(query);
   console.log(finalQuery);
 };
 
- useFetch(finalQuery, page, perPage)
-  
-  useEffect(() => {
-    setLoading(true);
-    getRegions({ page, perPage }).then(setRegions).finally(setLoading(false));
-  }, [page, perPage]);
-
   const shouldLoadingButton =
-    regions.length > 0 && regions.length >= perPage && !loading;
+    data.length > 0 && data.length >= perPage && !isLoading;
 
-  const shouldBackButton = page !== 1 && !loading;
+  const shouldBackButton = page !== 1 && !isLoading;
 
   const loadMore = () => {
     setPage((prevPage) => prevPage + 1);
@@ -49,7 +42,8 @@ const handleFilterSubmit = (query) => {
         <FilterRegions submit={handleFilterSubmit} />
         <HomeButton />
       </ButtonContainer>
-      {loading && (
+      {error && <ErrorPage/>}
+      {isLoading && (
         <Dna
           visible={true}
           height="80"
@@ -60,7 +54,7 @@ const handleFilterSubmit = (query) => {
         />
       )}
       <ul className={css.container}>
-        {regions.map(({ _id, name, locPath, image }) => (
+        {data.map(({ _id, name, locPath, image }) => (
           <Regions
             key={_id}
             id={_id}
