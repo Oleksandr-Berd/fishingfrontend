@@ -8,6 +8,7 @@ export const FormAddImage = ({ locPath, id }) => {
 
     formData.append("image", evt.target.image.files[0]);
     postNewImage(formData, locPath, id);
+    window.location.reload();
   };
 
   return (

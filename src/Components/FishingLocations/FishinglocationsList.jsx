@@ -21,7 +21,8 @@ const FishingLocationsList = () => {
       .then(setLocation)
       .finally(setLoading(false));
   }, [locPath, page, perPage]);
-  const shoudLoadingButton = location && location.length >= perPage && !loading;
+  const shouldLoadingButton =
+    location && location.length >= perPage && !loading;
 
   const shouldBackButton = page !== 1 && !loading;
 
@@ -101,7 +102,7 @@ const FishingLocationsList = () => {
               Load Prev
             </button>
           )}
-          {shoudLoadingButton && (
+          {shouldLoadingButton && (
             <button className={css.button} onClick={loadMore}>
               Load Next
             </button>

@@ -8,19 +8,28 @@ import { HomeButton } from "../../Utilities/Buttons/HomeButton";
 import css from "./RegionList.module.css";
 import { Dna } from "react-loader-spinner";
 import FilterRegions from "../FilterRegions/FilterRegions";
+import useFetch from "../../Utilities/Hooks/useFetch";
 
 const RegionList = () => {
   const [regions, setRegions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [perPage] = useState(4);
+  const [finalQuery, setFinalQuery] = useState("")
 
+const handleFilterSubmit = (query) => {
+  setFinalQuery(query);
+  console.log(finalQuery);
+};
+
+ useFetch(finalQuery, page, perPage)
+  
   useEffect(() => {
     setLoading(true);
     getRegions({ page, perPage }).then(setRegions).finally(setLoading(false));
   }, [page, perPage]);
 
-  const shoudLoadingButton =
+  const shouldLoadingButton =
     regions.length > 0 && regions.length >= perPage && !loading;
 
   const shouldBackButton = page !== 1 && !loading;
@@ -37,7 +46,7 @@ const RegionList = () => {
     <>
       <ButtonContainer>
         <BackButton />
-        <FilterRegions/>
+        <FilterRegions submit={handleFilterSubmit} />
         <HomeButton />
       </ButtonContainer>
       {loading && (
@@ -67,7 +76,7 @@ const RegionList = () => {
             Load Prev
           </button>
         )}
-        {shoudLoadingButton && (
+        {shouldLoadingButton && (
           <button className={css.button} onClick={loadMore}>
             Load Next
           </button>

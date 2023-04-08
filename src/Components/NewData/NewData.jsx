@@ -7,7 +7,7 @@ import css from "./NewData.module.css";
 const NewData = ({ submit }) => {
   const [title, setTitle] = useState("");
   const [{ latitude, longitude }, setCoordinates] = useState({});
-  const [adress, setAdress] = useState("");
+  const [address, setAddress] = useState("");
   const [fish, setFish] = useState([]);
   const [fishingConditions, setFishingConditions] = useState("");
   const [description, setDescription] = useState("");
@@ -21,7 +21,7 @@ const NewData = ({ submit }) => {
       {
         title,
         coordinates,
-        adress,
+        address,
         fish,
         fishingConditions,
         description,
@@ -31,12 +31,14 @@ const NewData = ({ submit }) => {
     );
     setTitle("");
     setCoordinates({});
-    setAdress("");
+    setAddress("");
     setFish([]);
     setFishingConditions("");
     setDescription("");
     setAllowedTime("");
     setLocPath("");
+    window.location.reload();
+
   };
 
   return (
@@ -63,6 +65,7 @@ const NewData = ({ submit }) => {
           onChange={(evt) => {
             setLocPath(evt.currentTarget.value);
           }}
+          
         />
         <datalist className={css.datalist} id="regions">
           <option value="Cherkasy">Cherkasy region</option>
@@ -128,11 +131,11 @@ const NewData = ({ submit }) => {
         <input
           className={css.input}
           type="text"
-          name="adress"
+          name="address"
           onChange={(evt) => {
-            setAdress(evt.currentTarget.value);
+            setAddress(evt.currentTarget.value);
           }}
-          value={adress}
+          value={address}
           placeholder="e.g. Road to Heaven"
           id="adress"
         />
