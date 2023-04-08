@@ -20,7 +20,8 @@ const FilterRegions = ({ submit }) => {
           name="filterRegions"
           className={css.inputFilterRegion}
           onChange={(evt) => {
-            setQuery(evt.currentTarget.value);
+            setQuery(evt.currentTarget.value)
+              
           }}
         />
       </label>

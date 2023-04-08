@@ -15,12 +15,14 @@ const RegionList = () => {
   const [page, setPage] = useState(1);
   const [perPage] = useState(4);
   const [finalQuery, setFinalQuery] = useState("")
-  const { data, isLoading, error } = useFetch(URL, {page, perPage});
-
 const handleFilterSubmit = (query) => {
   setFinalQuery(query);
-  console.log(finalQuery);
 };
+  const { data, isLoading, error } = useFetch(URL, {
+    finalQuery,
+    page,
+    perPage,
+  });
 
   const shouldLoadingButton =
     data.length > 0 && data.length >= perPage && !isLoading;
