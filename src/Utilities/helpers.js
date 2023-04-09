@@ -66,7 +66,17 @@ export const postNewImage = async (data, locPath, id) => {
     .catch(function (error) {
       console.log(error);
     });
-};
+}
+//   export const postNewImage = async (data, locPath, id) => {
+//   return await axios
+//     .post(`http://localhost:5002/upload}`, data)
+//     .then(function (response) {
+//       console.log(response);
+//     })
+//     .catch(function (error) {
+//       console.log(error);
+//     });
+// };
 
 // export const patchNewImage = async (data, locPath, _id) => {
 //   return await axios
