@@ -61,7 +61,7 @@ export const postNewImage = async (data, locPath, id) => {
   return await axios
     .post(`${postImageUrl}/${locPath}/${id}`, data)
     .then(function (response) {
-      console.log(response);
+      window.location.reload();
     })
     .catch(function (error) {
       console.log(error);

@@ -19,7 +19,7 @@ export const FormAddImage = ({ locPath, id }) => {
 
   const handleImageSubmit = (evt) => {
     evt.preventDefault()
-     postNewImage(files, locPath, id);
+    postNewImage(files, locPath, id);
   }
 
   return (

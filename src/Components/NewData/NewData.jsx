@@ -7,7 +7,7 @@ import css from "./NewData.module.css";
 const NewData = ({ submit }) => {
   const [title, setTitle] = useState("");
   const [{ latitude, longitude }, setCoordinates] = useState({});
-  const [address, setAddress] = useState("");
+  const [adress, setAdress] = useState("");
   const [fish, setFish] = useState([]);
   const [fishingConditions, setFishingConditions] = useState("");
   const [description, setDescription] = useState("");
@@ -21,7 +21,7 @@ const NewData = ({ submit }) => {
       {
         title,
         coordinates,
-        address,
+        adress,
         fish,
         fishingConditions,
         description,
@@ -31,7 +31,7 @@ const NewData = ({ submit }) => {
     );
     setTitle("");
     setCoordinates({});
-    setAddress("");
+    setAdress("");
     setFish([]);
     setFishingConditions("");
     setDescription("");
@@ -131,11 +131,11 @@ const NewData = ({ submit }) => {
         <input
           className={css.input}
           type="text"
-          name="address"
+          name="adress"
           onChange={(evt) => {
-            setAddress(evt.currentTarget.value);
+            setAdress(evt.currentTarget.value);
           }}
-          value={address}
+          value={adress}
           placeholder="e.g. Road to Heaven"
           id="adress"
         />

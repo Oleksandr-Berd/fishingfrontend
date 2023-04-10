@@ -19,7 +19,7 @@ const PreciseLocation = () => {
 
   const {
     title,
-    address,
+    adress,
     fish,
     description,
     coordinates,
@@ -41,7 +41,7 @@ const PreciseLocation = () => {
       <div className={css.gridContainer}>
         <div className={css.dataContainer}>
           <h1 className={css.title}>{location !== null && title}</h1>
-          <p className={css.address}>Address: {address}</p>
+          <p className={css.adress}>Address: {adress}</p>
           <p className={css.description}>{description}</p>
           <p style={{ fontSize: "20px" }}>
             <span style={{ fontWeight: "800", fontSize: "24px" }}>
