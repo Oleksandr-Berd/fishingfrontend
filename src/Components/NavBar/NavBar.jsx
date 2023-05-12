@@ -1,9 +1,8 @@
 import { NavLink } from "react-router-dom";
-import { Outlet } from "react-router-dom";
 import css from "./NavBar.module.css";
 import { useAuth } from "../../Utilities/Hooks/useAuth";
 
-const NavBar = () => {
+const NavBar = ({children}) => {
   const navItem = [
     { href: "newData", text: "Add your own data" },
     { href: "region", text: "Fishing locations" },
@@ -14,18 +13,20 @@ const NavBar = () => {
 
 
   return (
-    <nav className={css.navBar}>
-      <NavLink className={css.link} to="/">
-        <span className={css.text}> Home</span>
-        
-      </NavLink>
-      {isLoggedIn && navItem.map(({ href, text }) => (
-        <NavLink to={href} key={href} className={css.link}>
-          <span className={css.text}> {text}</span>
+    <>
+      <nav className={css.navBar}>
+        <NavLink className={css.link} to="/">
+          <span className={css.text}> Home</span>
         </NavLink>
-      ))}
-      <Outlet />
-    </nav>
+        {isLoggedIn &&
+          navItem.map(({ href, text }) => (
+            <NavLink to={href} key={href} className={css.link}>
+              <span className={css.text}> {text}</span>
+            </NavLink>
+          ))}
+      </nav>
+      {children}
+    </>
   );
 };
 

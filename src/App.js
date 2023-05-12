@@ -19,7 +19,6 @@ const LoginPage = lazy(() => import("./Pages/Login"));
 const TitleHeader = lazy(() => import("./Components/Header/TitleHead"));
 const Header = lazy(() => import("./Components/Header/Header"));
 const Home = lazy(() => import("./Components/Home/Home"));
-const NavBar = lazy(() => import("./Components/NavBar/NavBar"));
 const Fish = lazy(() => import("./Components/Fish/Fish"));
 const RegionList = lazy(() => import("./Components/RegionList/RegionList"));
 const FishingLocationsList = lazy(() =>
@@ -91,9 +90,7 @@ function App() {
             {isLoggedIn ? <UserMenu /> : <AuthNav />}
           </Header>
           <Routes>
-            <Route path="/" element={<NavBar />}>
-              <Route path="home" element={<Home />} />
-            </Route>
+            <Route path="home" element={<Home />} />
             <Route index element={<Navigate to={"home"} />}></Route>
             <Route
               path="/register"
